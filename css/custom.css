@@ -1,0 +1,13 @@
+.link-box {
+	display: flex;
+	justify-content: space-around;
+}
+
+.popup-modal .link-box a {
+	font-size: 22px;
+}
+
+.portfolio-item-meta {
+	background-color: slateblue;
+    height: 100%;
+}
