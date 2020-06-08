@@ -421,8 +421,22 @@
                </div>
                <div class="row">
                   <div class="eight columns">
-                     <!-- form -->
-                     <form action="sendEmail.php" method="post" id="contactForm" name="contactForm" data-netlify="true">
+					 <!-- form -->
+					 <div id="formBlock">
+						<form id="someForm">
+							<label for="name">Name:</label> <input type="text" id="name"><br/>
+							<label for="email">Email:</label> <input type="email" id="email"><br/>
+							<label for="comments">Comments:</label> <br/>
+							<textarea id="comments"></textarea><br/>
+						<input type="submit">
+						</form>
+					</div>
+					<div id="thankyouBlock" style="display:none">
+						<p>
+							Thank you for filling out the form. I care a lot about it.
+						</p>
+					</div>
+                     <!-- <form method="post" id="contactForm">
                         <fieldset>
                            <div>
                               <label for="contactName">Name <span class="required">*</span></label>
@@ -447,7 +461,7 @@
                               </span>
                            </div>
                         </fieldset>
-                     </form>
+                     </form> -->
                      <!-- Form End -->
                      <!-- contact-warning -->
                      <div id="message-warning"> Error boy</div>
