@@ -136,139 +136,32 @@
 /*----------------------------------------------------*/
 /*	contact form
 ------------------------------------------------------*/
-
-// window.addEventListener("DOMContentLoaded", function() {
-
-//     var form = document.getElementById("my-form");
-//     var button = document.getElementById("my-form-button");
-//     var status = document.getElementById("my-form-status");
-
-//     // Success and Error functions for after the form is submitted
-    
-//     function success() {
-//       form.reset();
-//       button.style = "display: none ";
-//       status.innerHTML = "Thanks!";
-//     }
-
-//     function error() {
-//       status.innerHTML = "Oops! There was a problem.";
-//     }
-
-//     // handle the form submission event
-
-//     form.addEventListener("submit", function(ev) {
-//       ev.preventDefault();
-//       var data = new FormData(form);
-//       ajax(form.method, form.action, data, success, error);
-//     });
-//   });
-  
-//   // helper function for sending an AJAX request
-
-//   function ajax(method, url, data, success, error) {
-//     var xhr = new XMLHttpRequest();
-//     xhr.open(method, url);
-//     xhr.setRequestHeader("Accept", "application/json");
-//     xhr.onreadystatechange = function() {
-//       if (xhr.readyState !== XMLHttpRequest.DONE) return;
-//       if (xhr.status === 200) {
-//         success(xhr.response, xhr.responseType);
-//       } else {
-//         error(xhr.status, xhr.response, xhr.responseType);
-//       }
-//     };
-//     xhr.send(data);
-//   }
-
-$('#someForm').on('submit', function(e) {
-	e.preventDefault();
-	
-	//get the name field value
-	var name = $('#name').val();
-	//get the name field value
-	var email = $('#email').val();
-	//get the comments
-	var comments = $('#comments').val();
-				
-	//pretend we don't need validation
-	
-	//send to formspree
-	$.ajax({
-		url:'https://formspree.io/mgenkgeq',
-		method:'POST',
-		data:{
-			name:name,
-			_replyto:email,
-			 email:email,
-			comments:comments,
-			_subject:'My Form Submission',
-		},
-		dataType:"json",
-		success:function() {
-			console.log('success');	
-			$('#formBlock').hide();
-			$('#thankyouBlock').show();
-		}	
-
-	});		
-	
+	$('#someForm').on('submit', function(e) {
+		e.preventDefault();
+		
+		var name = $('#name').val();
+		var email = $('#email').val();
+		var comments = $('#comments').val();
+		
+		//send to formspree
+		$.ajax({
+			url:'https://formspree.io/mgenkgeq',
+			method:'POST',
+			data:{
+				name:name,
+				_replyto:email,
+				email:email,
+				comments:comments,
+				_subject:'My Form Submission',
+			},
+			dataType:"json",
+			success: function() {
+				$('#formBlock').fadeOut();
+				$('#message-success').fadeIn();
+				$('#image-loader').fadeOut();
+				$('#contactForm').fadeOut();
+				$('#message-success').fadeIn(); 
+			}
+		});	
+	});
 });
-
-//    $('form#contactForm button.submit').click(function(event) {
-// 	event.preventDefault()
-//       $('#image-loader').fadeIn();
-
-//     //   var contactName = $('#contactForm #contactName').val();
-//     //   var contactEmail = $('#contactForm #contactEmail').val();
-//     //   var contactSubject = $('#contactForm #contactSubject').val();
-// 	//   var contactMessage = $('#contactForm #contactMessage').val();
-	
-//       var contactName = "Mohan";
-//       var contactEmail = "mohan@gmail.com";
-//       var contactSubject = "test";
-//       var contactMessage = "test";
-
-//       var data = 'contactName=' + contactName + '&contactEmail=' + contactEmail +
-// 			   '&contactSubject=' + contactSubject + '&contactMessage=' + contactMessage;
-
-// 			   console.log('submit from here');
-
-//       $.ajax({
-// 	      type: "POST",
-// 	      url: "//formspree.io/mgenkgeq",
-// 	      data: data,
-// 	      success: function(msg) {
-
-// 			console.log('submit from here ', msg);
-
-//             // Message was sent
-//             if (msg == 'OK') {
-//                $('#image-loader').fadeOut();
-//                $('#message-warning').hide();
-//                $('#contactForm').fadeOut();
-//                $('#message-success').fadeIn();   
-//             }
-//             // There was an error
-//             else {
-//                $('#image-loader').fadeOut();
-//                $('#message-warning').html(msg);
-// 	            $('#message-warning').fadeIn();
-// 			}
-
-// 	      }
-
-// 	  });
-//       return false;
-//    });
-
-
-});
-
-
-
-
-
-
-
-
